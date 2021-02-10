@@ -12,7 +12,12 @@ const connect = function() {
   // interpret incoming data as text
   conn.setEncoding('utf8'); 
 
-  conn.on('connect', () => {
+  /**
+ * Setup User Interface 
+ * Specifically, so that we can handle user input via stdin
+ */
+
+ conn.on('connect', () => {
     conn.write('Name: AT');
     console.log("Successfully connected to game server");
 
@@ -33,7 +38,7 @@ const connect = function() {
     //   }, x);
     //   x = x + 1000;
     // }
-    
+
  });
   
 
