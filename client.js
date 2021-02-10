@@ -1,4 +1,5 @@
 const net = require('net');
+const { connected } = require('process');
 
 /**
  * Establishes connection with the game server
@@ -11,6 +12,11 @@ const connect = function() {
   // interpret incoming data as text
   conn.setEncoding('utf8'); 
 
+  conn.on('connect', () => {
+    conn.write('Name: AT');
+    console.log("Successfully connected to game server");
+  });
+  
   conn.on('data', (data) => {
     console.log('Server says: ', data);
   });
